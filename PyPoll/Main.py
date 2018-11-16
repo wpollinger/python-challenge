@@ -17,7 +17,7 @@ otooley = 0
 with open(csvpath) as elections:
 
     # Store data under the csvreader variable
-    csvreader = csv.reader(elections,delimiter=",")
+    csvreader = csv.DictReader(elections,delimiter=",")
 
     # Skip the header so we iterate through the actual values
     header = next(csvreader)
@@ -30,13 +30,13 @@ with open(csvpath) as elections:
 
         # We have four candidates if the name is found, count the times it appears and store in a list
         # We can use this values in our percent vote calculation in the print statements
-        if row[2] == "Khan":
+        if row["Candidate"] == "Khan":
             khan +=1
-        elif row[2] == "Correy":
+        elif row["Candidate"] == "Correy":
             correy +=1
-        elif row[2] == "Li":
+        elif row["Candidate"] == "Li":
             li +=1
-        elif row[2] == "O'Tooley":
+        elif row["Candidate"] == "O'Tooley":
             otooley +=1
 
  # To find the winner we want to make a dictionary out of the two lists we previously created
